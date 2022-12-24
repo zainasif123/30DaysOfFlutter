@@ -10,8 +10,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-     // home: MyWidget(),
-     home: zain(),
+      // home: MyWidget(),
+      home: zain(),
     );
   }
 }
@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
 //             //Text("Hello  Zain"),
 //             getmethod(),
 //             getavator()
-            
+
 //           ],
 //         ),
 //       ),
@@ -115,12 +115,19 @@ class zain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Center(
+    int days = 30;
+    return Scaffold(
+      appBar: AppBar(
+        actions: [],
+        title: Text("Home"),
+        centerTitle: false,
+      ),
+      body: Center(
         child: Container(
-          child: Text("zain"),
+          child: Text("zain $days"),
         ),
       ),
+      drawer: Drawer(),
     );
   }
 }
