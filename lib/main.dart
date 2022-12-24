@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const Home());
@@ -11,12 +12,14 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: GoogleFonts.lato().fontFamily,
+        //primaryTextTheme: GoogleFonts.loraTextTheme(),
         brightness: Brightness.light,
         // primaryColor: Colors.green,
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: "/screen1",
       routes: {
         "/": (context) => zain(),
         "/screen1": (context) => loginpage(),
@@ -61,15 +64,50 @@ class loginpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [],
-        title: Text("login"),
-        centerTitle: false,
-      ),
-      body: Center(
-        child: Container(
-          child: Text('login page'),
-        ),
+      body: Column(
+        children: [
+          Image.asset(
+            "./assets/images/1.png",
+            fit: BoxFit.cover,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            "Welcome",
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.orange),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+              horizontal: 20,
+            ),
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "UserName", hintText: "Enter Your Username"),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "Password", hintText: "Enter Your Password"),
+                ),
+                ElevatedButton(
+                    onPressed: (() => {print("hi zain")}),
+                    child: Text("Log in"))
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
