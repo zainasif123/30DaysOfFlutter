@@ -61,9 +61,16 @@ class zain extends StatelessWidget {
   }
 }
 
-class loginpage extends StatelessWidget {
+class loginpage extends StatefulWidget {
   const loginpage({super.key});
 
+  @override
+  State<loginpage> createState() => _loginpageState();
+}
+
+class _loginpageState extends State<loginpage> {
+  String _name = "";
+  bool changebutton = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +85,7 @@ class loginpage extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "Welcome",
+              "Welcome $_name",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -97,6 +104,11 @@ class loginpage extends StatelessWidget {
                   TextFormField(
                     decoration: InputDecoration(
                         labelText: "UserName", hintText: "Enter Your Username"),
+                    onChanged: ((value) {
+                      setState(() {
+                        _name = value;
+                      });
+                    }),
                   ),
                   SizedBox(
                     height: 20,
@@ -109,15 +121,50 @@ class loginpage extends StatelessWidget {
                   SizedBox(
                     height: 25,
                   ),
-                  ElevatedButton(
-                      style: TextButton.styleFrom(minimumSize: Size(140, 40)),
-                      onPressed: (() =>
-                          {Navigator.pushNamed(context, Routes.RouteHome)}),
-                      child: Text(
-                        "Log in",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ))
+                  // ElevatedButton(
+                  //     style: TextButton.styleFrom(minimumSize: Size(140, 40)),
+                  //     onPressed: (() =>
+                  //         {Navigator.pushNamed(context, Routes.RouteHome)}),
+                  //     child: Text(
+                  //       "Log in",
+                  //       style: TextStyle(
+                  //           fontSize: 20, fontWeight: FontWeight.bold),
+                  //     ))
+
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changebutton = true;
+                      });
+
+                      await Future.delayed(Duration(seconds: 1));
+                      Navigator.pushNamed(context, Routes.RouteHome);
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: changebutton ? 50 : 140,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        shape:
+                            changebutton ? BoxShape.circle : BoxShape.rectangle,
+                        // borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.deepPurple,
+                      ),
+                      child: changebutton
+                          ? Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            )
+                          : Text(
+                              "Log in",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                    ),
+                  ),
                 ],
               ),
             )
