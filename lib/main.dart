@@ -9,12 +9,92 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      // home: MyWidget(),
-      home: zain(),
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+        // primaryColor: Colors.green,
+        primarySwatch: Colors.green,
+      ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      routes: {
+        "/": (context) => zain(),
+        "/screen1": (context) => loginpage(),
+        "/screen2": (context) => homePage(),
+      },
     );
   }
 }
+
+class zain extends StatelessWidget {
+  const zain({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    int days = 30;
+    return Scaffold(
+      appBar: AppBar(
+        actions: [],
+        title: Text("zain"),
+        centerTitle: false,
+      ),
+      body: Center(
+        child: Container(
+          child: Text(
+            "zain $days",
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.orange),
+            textScaleFactor: 3,
+          ),
+        ),
+      ),
+      drawer: Drawer(),
+    );
+  }
+}
+
+class loginpage extends StatelessWidget {
+  const loginpage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [],
+        title: Text("login"),
+        centerTitle: false,
+      ),
+      body: Center(
+        child: Container(
+          child: Text('login page'),
+        ),
+      ),
+    );
+  }
+}
+
+class homePage extends StatelessWidget {
+  const homePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [],
+        title: Text("Home"),
+        centerTitle: false,
+      ),
+      body: Center(
+        child: Container(
+          child: Text('homepage'),
+        ),
+      ),
+    );
+  }
+}
+
 
 // class MyWidget extends StatelessWidget {
 //   const MyWidget({Key? key}) : super(key: key);
@@ -110,24 +190,3 @@ class Home extends StatelessWidget {
 //   }
 // }
 
-class zain extends StatelessWidget {
-  const zain({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    int days = 30;
-    return Scaffold(
-      appBar: AppBar(
-        actions: [],
-        title: Text("Home"),
-        centerTitle: false,
-      ),
-      body: Center(
-        child: Container(
-          child: Text("zain $days"),
-        ),
-      ),
-      drawer: Drawer(),
-    );
-  }
-}
