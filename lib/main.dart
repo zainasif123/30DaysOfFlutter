@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp1/Widget/drawer.dart';
 import 'package:myapp1/utils/routes.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class Home extends StatelessWidget {
         //primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/screen1",
+      //initialRoute: "/screen1",
+      initialRoute: "/",
       routes: {
         "/": (context) => zain(),
         // "/screen1": (context) => loginpage(),
@@ -40,23 +42,29 @@ class zain extends StatelessWidget {
     int days = 30;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [],
-        title: Text("zain"),
-        centerTitle: false,
+        title: Text(
+          "Catalog",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Center(
         child: Container(
-          child: Text(
-            "zain $days",
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange),
-            textScaleFactor: 3,
-          ),
-        ),
+            // child: Text(
+            //   "zain $days",
+            //   style: TextStyle(
+            //       fontSize: 20,
+            //       fontWeight: FontWeight.bold,
+            //       color: Colors.orange),
+            //   textScaleFactor: 3,
+            // ),
+            ),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
